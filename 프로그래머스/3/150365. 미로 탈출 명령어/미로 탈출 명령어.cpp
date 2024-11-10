@@ -1,9 +1,4 @@
 #include <string>
-#include <vector>
-#include <algorithm>
-#include <stack>
-#include <iostream>
-
 using namespace std;
 
 int dx[] = {1, 0, 0, -1};
@@ -18,11 +13,6 @@ string solution(int n, int m, int x, int y, int r, int c, int k) {
     {
         return "impossible";
     }
-    // {{좌표}, 이동 커맨드}
-    stack<pair<pair<int, int>, string>> st;
-
-    
-    st.push({{x, y}, ""});
     
     int nowX = x;
     int nowY = y;
