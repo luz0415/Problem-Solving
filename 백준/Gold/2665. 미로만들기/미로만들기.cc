@@ -3,7 +3,6 @@ using namespace std;
 
 int n;
 vector<vector<int> > rooms;
-vector<vector<int> > dp;
 
 int dx[] = {-1, 1, 0, 0};
 int dy[] = {0, 0, -1, 1};
@@ -12,7 +11,6 @@ void Input()
 {
 	cin >> n;
 	
-	dp.assign(n, vector<int>(n, 2501));
 	rooms.assign(n, vector<int>(n));
 	for(int i = 0; i < n; i++)
 	{
