@@ -32,7 +32,7 @@ void Input()
         strsSet.insert(s);
     }
 
-    for(auto& s : strsSet)
+    for(const string& s : strsSet)
     {
         Node* parentNode = trie[s[0]];
         parentNode->count++;
@@ -50,7 +50,7 @@ void Input()
             {
                 parentNode->children[s[j]]->count++;
             }
-            parentNode = parentNode->children[s[j]]; // 부모 노드를 업데이트
+            parentNode = parentNode->children[s[j]];
         }
     }
 }
@@ -63,7 +63,7 @@ void Solve()
     for(int i = 0; i < strs.size(); i++)
     {
         char firstChar = strs[i][0];
-        
+
         stack<pair<Node*, string>> st;
         string pre(1, firstChar);
         st.push({trie[firstChar], pre});
@@ -80,7 +80,7 @@ void Solve()
                 prefixLength = nowPrefix.length();
             }
 
-            for(auto& child : nowNode->children)
+            for(const pair<char, Node*>& child : nowNode->children)
             {
                 if(child.second->count >= 2)
                 {
@@ -95,9 +95,9 @@ void Solve()
         cout << strs[0] << '\n' << strs[1] << '\n';
         return;
     }
-    
+
     int count = 0;
-    for(string s : strs)
+    for(const string& s : strs)
     {
         if(prefixLength > s.length()) continue;
 
