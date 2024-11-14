@@ -1,8 +1,6 @@
 #include <string>
 #include <vector>
 #include <queue>
-#include <functional>  
-#include <iostream>
 
 using namespace std;
 
@@ -95,10 +93,8 @@ int solution(int k, int n, vector<vector<int>> reqs) {
     {
         for(int j = 0; j < combinations[i].size(); j++)
         {
-            cout << combinations[i][j];
             mentorNums[combinations[i][j]-1]++;
         }
-        cout <<endl;
         
         for(int type = 0; type < k; type++)
         {
