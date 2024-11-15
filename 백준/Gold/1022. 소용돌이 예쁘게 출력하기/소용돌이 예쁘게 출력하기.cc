@@ -1,16 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 
 vector<vector<int>> nums;
 vector<int> minusminus(5001);
 vector<int> plusminus(5001);
 vector<int> minusplus(5001);
-
-
-// 우,상,좌,하 1,1,2,2,3,3,4,4,5,
-int dr[] = {0, -1, 0, 1};
-int dc[] = {1, 0, -1, 0};
 
 int r1, c1, r2, c2;
 
