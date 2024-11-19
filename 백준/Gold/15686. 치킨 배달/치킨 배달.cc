@@ -2,7 +2,6 @@
 using namespace std;
 
 int N, M;
-vector<vector<int>> city;
 vector<pair<int, int>> houses;
 vector<pair<int, int>> chickens;
 vector<int> combinations;
@@ -11,14 +10,14 @@ int ans;
 void Input()
 {
     cin >> N >> M;
-    city.assign(N, vector<int>(N));
     for(int i = 0; i < N; i++)
     {
         for(int j = 0; j < N; j++)
         {
-            cin >> city[i][j];
-            if(city[i][j] == 1) houses.push_back({i, j});
-            else if(city[i][j] == 2) chickens.push_back({i, j});
+            int tmp;
+            cin >> tmp;
+            if(tmp == 1) houses.push_back({i, j});
+            else if(tmp == 2) chickens.push_back({i, j});
         }
     }
 }
