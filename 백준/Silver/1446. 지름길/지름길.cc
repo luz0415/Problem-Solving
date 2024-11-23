@@ -30,7 +30,6 @@ int DFS(int node, int drive, int prev)
             minDrive = min(minDrive, nextDrive);
         }
     }
-    // cout << node << " " << drive << " " << minDrive << endl;
     return minDrive;
 }
 
