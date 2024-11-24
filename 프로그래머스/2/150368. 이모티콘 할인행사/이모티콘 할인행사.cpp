@@ -37,7 +37,6 @@ void CheckPurchase()
         options[1] += purchasePrice;
     }
     
-    //cout << options[0] << " " << options[1] << endl;
     answerOptions.push_back(options);
 }
 
