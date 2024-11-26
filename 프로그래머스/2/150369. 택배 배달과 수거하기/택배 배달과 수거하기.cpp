@@ -1,51 +1,28 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include <iostream>
 
 using namespace std;
 
-vector<int> Deliveries;
-vector<int> Pickups;
-
-void Delivery(int& topDeliveryIdx, int cap)
+void DeliveryOrPickup(int& topIdx, vector<int>& homes, int cap)
 {
-    while(cap > 0 && topDeliveryIdx >= 0)
+    while(cap > 0 && topIdx >= 0)
     {
-        if(cap >= Deliveries[topDeliveryIdx])
+        if(cap >= homes[topIdx])
         {
-            cap -= Deliveries[topDeliveryIdx];
-            Deliveries[topDeliveryIdx] = 0;
-            while(topDeliveryIdx >= 0 && Deliveries[topDeliveryIdx] == 0) topDeliveryIdx--;
+            cap -= homes[topIdx];
+            homes[topIdx] = 0;
+            while(topIdx >= 0 && homes[topIdx] == 0) topIdx--;
         }
         else
         {
-            Deliveries[topDeliveryIdx] -= cap;
-            cap = 0;
-        }
-    }
-}
-
-void Pickup(int& topPickupIdx, int cap)
-{
-    while(cap > 0 && topPickupIdx >= 0)
-    {
-        if(cap >= Pickups[topPickupIdx])
-        {
-            cap -= Pickups[topPickupIdx];
-            Pickups[topPickupIdx] = 0;
-            while(topPickupIdx >= 0 && Pickups[topPickupIdx] == 0) topPickupIdx--;
-        }
-        else
-        {
-            Pickups[topPickupIdx] -= cap;
+            homes[topIdx] -= cap;
             cap = 0;
         }
     }
 }
 
 long long solution(int cap, int n, vector<int> deliveries, vector<int> pickups) {
-    Deliveries = deliveries; Pickups = pickups;
     int topDeliveryIdx = -1;
     int topPickupIdx = -1;
     
@@ -68,9 +45,8 @@ long long solution(int cap, int n, vector<int> deliveries, vector<int> pickups) 
     while(topDeliveryIdx >= 0 || topPickupIdx >= 0)
     {
         answer += (max(topDeliveryIdx, topPickupIdx) + 1) * 2;
-        // cout << answer << " " << topDeliveryIdx << " " << topPickupIdx << endl;
-        Delivery(topDeliveryIdx, cap);
-        Pickup(topPickupIdx, cap);
+        DeliveryOrPickup(topDeliveryIdx, deliveries, cap);
+        DeliveryOrPickup(topPickupIdx, pickups, cap);
     }
     return answer;
 }
