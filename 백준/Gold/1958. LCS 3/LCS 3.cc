@@ -19,11 +19,11 @@ void Solve()
             {
                 if (s1[i] == s2[j] && s2[j] == s3[k])
                 {
-                    DP[i + 1][j + 1][k + 1] = max({DP[i + 1][j][k], DP[i][j + 1][k], DP[i][j][k + 1], DP[i + 1][j + 1][k], DP[i][j + 1][k + 1], DP[i + 1][j][k + 1], DP[i][j][k] + 1}); 
+                    DP[i + 1][j + 1][k + 1] = DP[i][j][k] + 1;
                 }
                 else
                 {
-                    DP[i + 1][j + 1][k + 1] = max({DP[i + 1][j][k], DP[i][j + 1][k], DP[i][j][k + 1], DP[i + 1][j + 1][k], DP[i][j + 1][k + 1], DP[i + 1][j][k + 1]}); 
+                    DP[i + 1][j + 1][k + 1] = max({DP[i][j + 1][k + 1], DP[i + 1][j][k + 1], DP[i + 1][j + 1][k]}); 
                 }
             }
         }
