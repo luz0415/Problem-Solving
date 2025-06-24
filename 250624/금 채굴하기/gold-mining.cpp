@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <utility>
+#include <cmath>
 using namespace std;
 
 int n, m;
@@ -16,18 +16,19 @@ int mine(int k, int i, int j)
 
     vector<vector<bool>> visited(n, vector<bool>(n, false)); 
     queue<vector<int>> q;
-    q.push({i, j, k});
+    q.push({i, j});
     while(!q.empty())
     {
         vector<int> now = q.front();
-        int x = now[0], y = now[1], nowK = now[2];
+        int x = now[0], y = now[1];
+        int nowK = abs(i-x) + abs(j-y);
         q.pop();
 
         if(visited[x][y]) continue;
         visited[x][y] = true;
 
         goldCount += grid[x][y];
-        if(nowK == 0) continue;
+        if(nowK == k) continue;
 
         for(int idx = 0; idx < 4; idx++)
         {
@@ -36,7 +37,7 @@ int mine(int k, int i, int j)
 
             if(nx >= 0 && nx < n && ny >= 0 && ny < n && !visited[nx][ny])
             {
-                q.push({nx, ny, nowK - 1});
+                q.push({nx, ny});
             }
         }
     }
