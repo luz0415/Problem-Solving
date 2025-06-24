@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <stack>
+#include <queue>
 #include <utility>
 using namespace std;
 
@@ -15,14 +15,13 @@ int mine(int k, int i, int j)
     int goldCount = 0;
 
     vector<vector<bool>> visited(n, vector<bool>(n, false)); 
-    stack<vector<int>> st;
-    vector<int> v = {i, j, k};
-    st.push(v);
-    while(!st.empty())
+    queue<vector<int>> q;
+    q.push({i, j, k});
+    while(!q.empty())
     {
-        vector<int> now = st.top();
+        vector<int> now = q.front();
         int x = now[0], y = now[1], nowK = now[2];
-        st.pop();
+        q.pop();
 
         if(visited[x][y]) continue;
         visited[x][y] = true;
@@ -30,15 +29,14 @@ int mine(int k, int i, int j)
         goldCount += grid[x][y];
         if(nowK == 0) continue;
 
-        for(int i = 0; i < 4; i++)
+        for(int idx = 0; idx < 4; idx++)
         {
-            int nx = dx[i] + x;
-            int ny = dy[i] + y;
+            int nx = dx[idx] + x;
+            int ny = dy[idx] + y;
 
-            if(nx >= 0 && nx < n && ny >= 0 && ny < n)
+            if(nx >= 0 && nx < n && ny >= 0 && ny < n && !visited[nx][ny])
             {
-                vector<int> next = {nx, ny, nowK - 1};
-                st.push(next);
+                q.push({nx, ny, nowK - 1});
             }
         }
     }
