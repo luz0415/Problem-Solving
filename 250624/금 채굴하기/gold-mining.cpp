@@ -60,7 +60,7 @@ int main() {
 
     // Please write your code here.
     int ans = 0;
-    for(int k = 0; k <= 10; k++)
+    for(int k = 0; k <= 20; k++)
     {
         for(int i = 0; i < n; i++)
         {
