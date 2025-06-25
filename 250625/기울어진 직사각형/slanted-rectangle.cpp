@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <algorithm>
 using namespace std;
 
 int n;
@@ -20,32 +20,35 @@ int main() {
     {
         for(int j = 0; j < n; j++)
         {
-            if(i-1 < 0 || i+1 >= n || j-1 < 0 || j+1 >= n) { continue; }
-            
-            //우상
-            int squareScore = grid[i-1][j] + grid[i+1][j] + grid[i][j-1] + grid[i][j+1];
-            int nx = i-1; int ny = j+1;
-            bool isCanUpRight = (nx - 1 >= 0) && (ny + 1 < n);
-            while(isCanUpRight)
+            if(i-2 < 0 || j+1 >= n || j-1  < 0) { continue; }
+            int maxRightNum = min(n-j-1, i-1);
+            for(int rightNum = 1; rightNum <= maxRightNum; rightNum++)
             {
-                squareScore += grid[nx-1][ny] + grid[nx][ny+1];
-                nx--; ny++;
-                isCanUpRight = (nx - 1 >= 0) && (ny + 1 < n);
+                int leftNum = min(j, min(j+rightNum - 1, i-rightNum));
+                int squareScore = 0;
+                int nx = i, ny = j;
+                for(int num = 1; num <= rightNum; num++)
+                {
+                    nx--; ny++;
+                    squareScore += grid[nx][ny];
+                }
+                for(int num = 1; num <= leftNum; num++)
+                {
+                    nx--; ny--;
+                    squareScore += grid[nx][ny];
+                }
+                for(int num = 1; num <= rightNum; num++)
+                {
+                    nx++; ny--;
+                    squareScore += grid[nx][ny];
+                }
+                for(int num = 1; num <= leftNum; num++)
+                {
+                    nx++; ny++;
+                    squareScore += grid[nx][ny];
+                }
+                ans = squareScore > ans ? squareScore : ans;
             }
-
-            ans = ans < squareScore ? squareScore : ans;
-            //좌상
-            squareScore = grid[i-1][j] + grid[i+1][j] + grid[i][j-1] + grid[i][j+1];
-            nx = i-1; ny = j-1;
-            bool isCanUpLeft = (nx - 1 >= 0) && (ny - 1 >= n);
-            while(isCanUpLeft)
-            {
-                squareScore += grid[nx-1][ny] + grid[nx][ny-1];
-                nx--; ny--;
-                isCanUpLeft = (nx - 1 >= 0) && (ny - 1 >= n);
-            }
-
-            ans = ans < squareScore ? squareScore : ans;
         }
     }
     cout << ans;
