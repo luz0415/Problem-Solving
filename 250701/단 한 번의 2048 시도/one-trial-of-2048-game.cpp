@@ -95,7 +95,7 @@ int main() {
 
     if(dir == 'L') dir = 'R';
     else if(dir == 'R') dir = 'L';
-    //rotateGrid(dir);
+    rotateGrid(dir);
 
     for(int i = 0; i < 4; i++)
     {
