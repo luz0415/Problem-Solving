@@ -38,6 +38,7 @@ void rotateGrid(char dir)
             }
         }
     }
+    else return;
 
     for(int i = 0; i < 4; i++)
     {
