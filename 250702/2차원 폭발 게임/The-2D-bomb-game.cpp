@@ -89,7 +89,11 @@ int main() {
 
     for(int i = 0; i < K; i++)
     {
-        Bomb();
+        bool isBombed = false;
+        do
+        {
+            isBombed = Bomb();
+        }while(isBombed);
         Rotate();
     }
 
