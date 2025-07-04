@@ -34,7 +34,6 @@ int main() {
         if(nx < 0 || nx >= N || ny < 0 || ny >= N) { time++; break; }
         
         if(visit[x][y] >= 2) { time = -1; break; }
-        visit[x][y]++;
 
         // 2. 벽이라면
         if(grid[nx][ny] == '#')
@@ -51,6 +50,7 @@ int main() {
         {
             time++;
             x = nx; y = ny;
+            visit[x][y]++;
         }
         // 4. 벽이 없다면 이동 후 시계방향으로 틀어서 한칸 더 이동
         else
@@ -58,6 +58,7 @@ int main() {
             time += 2;
             x = rightX; y = rightY;
             dir = rightDir;
+            visit[nx][ny]++; visit[x][y]++;
         }
     }
 
