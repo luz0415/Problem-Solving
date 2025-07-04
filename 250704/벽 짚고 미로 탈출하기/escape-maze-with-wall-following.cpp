@@ -33,8 +33,9 @@ int main() {
         // 1. 바로 나갈 수 있다면
         if(nx < 0 || nx >= N || ny < 0 || ny >= N) { time++; break; }
         
-        if(visit[x][y] == true) { time = -1; break; }
-        visit[x][y] = true;
+        if(time >= 100000) { time = -1; break; }
+        //if(visit[x][y] == true) { time = -1; break; }
+        //visit[x][y] = true;
 
         // 2. 벽이라면
         if(grid[nx][ny] == '#')
