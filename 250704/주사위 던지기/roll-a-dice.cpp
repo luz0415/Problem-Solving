@@ -26,15 +26,18 @@ int main() {
         }
     }
 
+    grid[r][c] = 6;
     int currentDice = 6;
     // 상하좌우
     int adj[] = {5, 2, 4, 3};
     for(int i = 0; i < m; i++)
     {
-        if(r < 0 || r >= n || c < 0 || c >= n) continue;
-        grid[r][c] = currentDice;
-
         int dir = directions[i];
+        int nr = r + dx[dir];    
+        int nc = c + dy[dir];    
+
+        if(nr < 0 || nr >= n || nc < 0 || nc >= n) { continue; }
+
         int nextDice = adj[dir];
         if(dir == 0){
             adj[0] = 7-currentDice;
@@ -50,11 +53,9 @@ int main() {
             adj[3] = 7-currentDice;
         }
         currentDice = nextDice;
-        r += dx[dir];    
-        c += dy[dir];
+        grid[nr][nc] = currentDice;
+        r = nr; c = nc;
     }
-    
-    if(!(r < 0 || r >= n || c < 0 || c >= n)) grid[r][c] = currentDice;
 
     int ans = 0;
     for(int i = 0; i < n; i++)
