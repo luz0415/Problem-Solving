@@ -5,7 +5,7 @@ using namespace std;
 int N;
 int x, y;
 char grid[100][100];
-bool visit[100][100];
+int visit[100][100];
 
 int dx[] = {0, -1, 0, 1};
 int dy[] = {1, 0, -1, 0};
@@ -18,7 +18,7 @@ int main() {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             cin >> grid[i][j];
-            visit[i][j] = false;
+            visit[i][j] = 0;
         }
     }
 
@@ -33,9 +33,8 @@ int main() {
         // 1. 바로 나갈 수 있다면
         if(nx < 0 || nx >= N || ny < 0 || ny >= N) { time++; break; }
         
-        if(time >= 100000) { time = -1; break; }
-        //if(visit[x][y] == true) { time = -1; break; }
-        //visit[x][y] = true;
+        if(visit[x][y] >= 2) { time = -1; break; }
+        visit[x][y]++;
 
         // 2. 벽이라면
         if(grid[nx][ny] == '#')
