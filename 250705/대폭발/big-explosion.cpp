@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <cmath>
 using namespace std;
 
 int n, m, r, c;
@@ -22,8 +22,8 @@ int main() {
                 {
                     for(int d = 0; d < 4; d++)
                     {
-                        int nx = i + dx[d] * t;
-                        int ny = j + dy[d] * t;
+                        int nx = i + dx[d] * pow(2, t-1);
+                        int ny = j + dy[d] * pow(2, t-1);
                         if(nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
 
                         if(grid[nx][ny] == 0) grid[nx][ny] = 2;
@@ -49,8 +49,9 @@ int main() {
     {
         for(int j = 0; j < n; j++)
         {
+            //cout << grid[i][j] << ' ';
             if(grid[i][j] != 0) count++;
-        }
+        }//cout << endl;
     }
 
     cout << count;
