@@ -60,11 +60,6 @@ int main() {
                 cout << time;
                 return 0;
             }
-            if(grid[nx][ny] == 1)
-            {
-                cout << time;
-                return 0;
-            }
                         
             if(grid[nx][ny] == -1)
             {
@@ -80,6 +75,12 @@ int main() {
             for(int k = snake.size()-1; k > 0; k--)
             {
                 grid[snake[k].first][snake[k].second] = 1;
+            }
+            
+            if(grid[nx][ny] == 1)
+            {
+                cout << time;
+                return 0;
             }
             grid[nx][ny] = 1;
             snake[0] = {nx, ny};
