@@ -72,11 +72,12 @@ int main() {
                 grid[snake[k].first][snake[k].second] = 0;
                 snake[k] = snake[k-1];
             }
+            grid[snake[0].first][snake[0].second] = 0;
             for(int k = snake.size()-1; k > 0; k--)
             {
                 grid[snake[k].first][snake[k].second] = 1;
             }
-            
+
             if(grid[nx][ny] == 1)
             {
                 cout << time;
