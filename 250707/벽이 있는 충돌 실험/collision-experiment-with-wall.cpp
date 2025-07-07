@@ -55,7 +55,7 @@ int main() {
                     
                     int dir = grid[i][j];
                     int nx = i + dx[dir];
-                    int ny = j + dx[dir];
+                    int ny = j + dy[dir];
                     int nDir = dir;
 
                     if(nx < 0 || nx >= N || ny < 0 || ny >= N)
