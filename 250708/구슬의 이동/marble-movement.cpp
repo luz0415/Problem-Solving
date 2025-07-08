@@ -7,8 +7,8 @@ using namespace std;
 struct compare{
     bool operator()(pair<pair<int, int>, int> &a, pair<pair<int, int>, int>& b)
     {
-        if(a.first.first == b.first.first) return a.first.second < b.first.second;
-        return a.first.first < b.first.first;
+        if(a.first.first == b.first.first) return a.first.second > b.first.second;
+        return a.first.first > b.first.first;
     }
 };
 int n, m, t, k;
