@@ -4,7 +4,7 @@ using namespace std;
 
 string expression;
 int numByAlphabet[6];
-int ans;
+int ans = -2e31;
 
 int CalculateExpression()
 {
