@@ -9,7 +9,7 @@ int ans;
 
 void SelectNum(int step, int now)
 {
-    if(step == n)
+    if(step == m)
     {
         int res = nums[0];
         for(int i = 1; i < m; i++)
@@ -20,7 +20,7 @@ void SelectNum(int step, int now)
         return;
     }
 
-    for(int i = now + 1; i <= n; i++)
+    for(int i = now + 1; i < n; i++)
     {
         nums.push_back(A[i]);
         SelectNum(step+1, i);
