@@ -6,7 +6,6 @@
 using namespace std;
 
 int N;
-char grid[20][20];
 vector<pair<int, pair<int, int>>> coins;
 pair<int, int> s;
 pair<int, int> e;
@@ -23,22 +22,17 @@ void SelectCoin(int step, int idx)
 {
     if(step == 3)
     {
-        dist += GetDistance(coins[idx-1].second, e);
-        if(ans == -1)
-        {
-            ans = dist;
-        }
-        else
-        {
-            ans = min(ans, dist);
-        }
+        int d = GetDistance(coins[idx-1].second, e);
+        dist += d;
+        ans = ans == -1 ? dist : min(ans, dist);
+        dist -= d;
         return;
     }
     if(idx == coins.size()) return;
 
     pair<int, int> originCoord;
-    if(idx > 0) originCoord = coins[idx-1].second;
-    else originCoord = s;
+    if(idx == 0) originCoord = s;
+    else originCoord = coins[idx-1].second;
 
     for(int i = idx; i < coins.size(); i++)
     {
@@ -55,18 +49,19 @@ int main() {
     for (int i = 0; i < N; i++)
         for (int j = 0; j < N; j++)
         {
-            cin >> grid[i][j];
-            if(grid[i][j] == 'S')
+            char c;
+            cin >> c;
+            if(c == 'S')
             {
                 s = {i, j};
             }
-            else if(grid[i][j] == 'E')
+            else if(c == 'E')
             {
                 e = {i, j};
             }
-            else if(grid[i][j] != '.')
+            else if(c != '.')
             {
-                coins.push_back({grid[i][j]-'0', {i, j}});
+                coins.push_back({c-'0', {i, j}});
             }
         }
 
