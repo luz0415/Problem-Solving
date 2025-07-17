@@ -27,7 +27,7 @@ void SelectNum(int step, int idx)
     for(int i = idx; i < 2*n; i++)
     {
         nums.push_back(num[i]);
-        SelectNum(step+1, idx+1);
+        SelectNum(step+1, i+1);
         nums.pop_back();
     }
 }
