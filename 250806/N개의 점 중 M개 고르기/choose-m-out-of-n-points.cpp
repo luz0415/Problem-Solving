@@ -16,14 +16,16 @@ void SelectNum(int step)
 {
     if(selectIdx.size() == m)
     {
+        int maxDist = 0;
         for(int i = 0; i < m; i++)
         {
             for(int j = i + 1; j < m; j++)
             {
                 int dist = Dist(x[selectIdx[i]], x[selectIdx[j]], y[selectIdx[i]], y[selectIdx[j]]);
-                if(dist < ans) ans = dist;
+                if(dist > maxDist) maxDist = dist;
             }
         }
+        if(maxDist < ans) ans = maxDist;
         return;
     }
     if(step == n) return;
