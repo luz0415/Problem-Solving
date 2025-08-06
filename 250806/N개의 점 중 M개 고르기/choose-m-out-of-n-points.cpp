@@ -21,7 +21,6 @@ void SelectNum(int step)
             for(int j = i + 1; j < m; j++)
             {
                 int dist = Dist(x[selectIdx[i]], x[selectIdx[j]], y[selectIdx[i]], y[selectIdx[j]]);
-                cout << dist;
                 if(dist < ans) ans = dist;
             }
         }
