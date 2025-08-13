@@ -18,7 +18,7 @@ void SelectNum(int step)
         {
             sum += A[nums[i]][nums[i+1]];
         }
-        sum += A[nums[n-1]][nums[0]];
+        sum += A[nums[n-1]][0];
         ans = ans > sum ? sum : ans;
         return;
     }
@@ -26,6 +26,7 @@ void SelectNum(int step)
     for(int i = 0; i < n; i++)
     {
         if(visited[i]) continue;
+        if(A[nums[step-1]][i] == 0) continue;
         visited[i] = true;
         nums.push_back(i);
         SelectNum(step+1);
