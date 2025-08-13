@@ -13,6 +13,8 @@ void SelectNum(int step)
 {
     if(step == n)
     {
+        if(A[nums[step-1]][0] == 0) return;
+        
         int sum = 0;
         for(int i = 0; i < n-1; i++)
         {
