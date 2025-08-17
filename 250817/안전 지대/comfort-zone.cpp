@@ -6,7 +6,7 @@ int N, M;
 int grid[50][50];
 int dx[] = {0, 0, -1, 1};
 int dy[] = {-1, 1, 0, 0};
-int ans, maxCount = 0, count = 0;
+int ans = 0, maxCount = 1, count = 0;
 vector<vector<bool>> visited;
 
 void DFS(int x, int y, int k)
